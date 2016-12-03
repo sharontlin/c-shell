@@ -17,6 +17,7 @@ int StdIn, StdOut = -1;
 //************************************************
 //      strip(char * str)
 //      removes white space from strings
+//      args: str - the string to be stripped
 //      output: stripped string
 //
 //************************************************
@@ -35,6 +36,7 @@ char * strip(char * str) {
  //*********************************************************
  //      parse(char ** cmd, char * arg, char ** parent)
  //      splits the line across all semicolons
+//       args:
  //          cmd = array of arguments
  //          str = string with unparsed line args
  //          parent = pointer to str
@@ -63,6 +65,7 @@ char * parse(char ** cmd, char * str, char ** parent) {
 //*********************************************************
 //      verify(char * in)
 //      reads a string and catches any bad tokens
+//      args: str - the string to be verified
 //      output: any bad tokens in the string
 //
 //*********************************************************
@@ -85,6 +88,7 @@ char * verify(char * str) {
 //************************************************
 //      sighandler(int signo)
 //      handles and interprets signals
+//      args: signo - the signal value
 //      output: none
 //
 //************************************************
@@ -96,6 +100,7 @@ static void sighandler(int signo) {
 //************************************************
 //      resetIO(int fd, int type)
 //      resets stdin/stdout to place on file table
+//      args:
 //        fd - standard file descriptor
 //        type:
 //            0 = stdin
@@ -111,6 +116,7 @@ void resetIO(int fd, int type){
 //************************************************
 //      resetStdIO()
 //      resets stdin/stdout to fd 0 and 1
+//      args: none
 //      output: none
 //
 //************************************************
@@ -128,6 +134,9 @@ void resetStdIO(){
 //        where:
 //            0 = input
 //            1 = output
+//      args:
+//        redirectTo - pointer to where to be redirected
+//        type - how the redirection occurs
 //      output: int - new fd of stdin/stdout
 //
 //************************************************
@@ -153,6 +162,9 @@ int redirect(char * redirectTo, int type){
 //      checks for redirects in line
 //          0 = <
 //          1 = >
+//      args:
+//        command - pointer to commands
+//        type - type of redirection
 //      output: index of redir symbol
 //
 //************************************************
@@ -173,6 +185,7 @@ int redirCheck(char ** command, int type){
 //************************************************
 //      handleRedir(char ** cmd)
 //      redirects stdin/stdout
+//      args: cmd - pointer to commands
 //      output: command with NULL in place of symbol
 //
 //************************************************
@@ -195,6 +208,7 @@ char ** handleRedir(char ** cmd){
 //************************************************
 //      pipeCheck(char ** cmd)
 //      searches for pipe symbol in command
+//      args: cmd - pointer to commands
 //      output: index of "|"
 //
 //************************************************
@@ -212,6 +226,7 @@ int pipeCheck(char ** cmd){
 //************************************************
 //      pipeExec(char ** cmd)
 //      pipes and executes command
+//      args: cmd - pointer to commands 
 //      output: 1 if ran, 0 if no pipe
 //
 //************************************************
@@ -253,6 +268,7 @@ int pipeExec(char ** cmd){
 //************************************************
 //      cd(char ** cmd)
 //      changes directory
+//      args: cmd - pointer to commands
 //      output: none
 //
 //************************************************
@@ -274,6 +290,7 @@ void cd(char ** cmd) {
 //****************************************************
 //      convTildes(char ** cmd)
 //      converts ~ to home dir path
+//      args: cmd - pointer to commands
 //      output: command with home path in place of ~
 //
 //****************************************************
@@ -295,6 +312,7 @@ char ** convTildes(char ** cmd){
 //****************************************************
 //      execute(char ** cmd)
 //      forks and executes the command
+//      args: cmd - pointer to commands
 //      output: none
 //
 //****************************************************
