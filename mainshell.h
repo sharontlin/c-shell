@@ -1,0 +1,14 @@
+char * strip(char * str);
+char * parse(char ** cmd, char * str, char ** parent);
+char * verify(char * str);
+static void sighandler(int signo);
+void resetIO(int fd, int type);
+void resetStdIO();
+int redirect(char * redirectTo, int type);
+int redirCheck(char ** command, int type);
+char ** handleRedir(char ** cmd);
+int pipeCheck(char ** cmd);
+int pipeExec(char ** cmd);
+void cd(char ** cmd);
+char ** convTildes(char ** cmd);
+void execute(char ** cmd);
