@@ -1,5 +1,4 @@
 # Main Shell
-by Sharon Lin
 
 ## Features
 - Forks and executes commands
